@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yonca Üstünbaş — Senior Backend Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Spline+Sans+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f1ea;
+    --ink: #1a1916;
+    --muted: #6b6557;
+    --line: #d8d2c4;
+    --accent: #9a3412;
+    --paper: #faf8f2;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(circle at 1px 1px, rgba(26,25,22,0.025) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* Header */
+  header {
+    padding: 100px 0 56px;
+    border-bottom: 1px solid var(--line);
+  }
+  .name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(2.6rem, 7vw, 4.2rem);
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 22px;
+  }
+  .tagline {
+    font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+    color: var(--ink);
+    max-width: 560px;
+    line-height: 1.45;
+  }
+  .tagline .lede { color: var(--accent); font-weight: 500; }
+  .location {
+    font-family: 'Spline Sans Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 26px;
+  }
+
+  /* Sections */
+  section { padding: 56px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+  .label {
+    font-family: 'Spline Sans Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 26px;
+    display: block;
+  }
+  .about p {
+    font-size: clamp(1.15rem, 2.6vw, 1.4rem);
+    line-height: 1.6;
+    max-width: 640px;
+  }
+
+  /* Work */
+  .role { margin-bottom: 40px; }
+  .role:last-child { margin-bottom: 0; }
+  .role-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .role-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.28rem;
+    letter-spacing: -0.01em;
+  }
+  .role-org { color: var(--accent); font-weight: 500; }
+  .role-years {
+    font-family: 'Spline Sans Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+  .role p { color: #36332c; max-width: 640px; }
+
+  /* Skills */
+  .skills-grid { display: grid; gap: 18px; }
+  .skill-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 18px;
+    align-items: start;
+  }
+  .skill-cat {
+    font-family: 'Spline Sans Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--muted);
+    padding-top: 3px;
+  }
+  .skill-list { font-size: 1.02rem; line-height: 1.5; }
+  .skill-row.current .skill-cat { color: var(--accent); }
+
+  /* Education + publication */
+  .edu-item { margin-bottom: 18px; }
+  .edu-item:last-child { margin-bottom: 0; }
+  .edu-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.1rem; }
+  .edu-meta { font-family: 'Spline Sans Mono', monospace; font-size: 0.78rem; color: var(--muted); }
+  .pub p { max-width: 640px; font-style: italic; color: #36332c; }
+  .pub a { color: var(--accent); }
+
+  /* Links footer */
+  footer { padding: 56px 0 90px; }
+  .links { display: flex; flex-wrap: wrap; gap: 14px; }
+  .links a {
+    font-family: 'Spline Sans Mono', monospace;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    border: 1px solid var(--line);
+    padding: 12px 20px;
+    border-radius: 2px;
+    background: var(--paper);
+    transition: all 0.18s ease;
+  }
+  .links a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* Load animation */
+  .reveal { opacity: 0; transform: translateY(14px); animation: rise 0.7s cubic-bezier(0.2,0.7,0.2,1) forwards; }
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+  header .name { animation-delay: 0.05s; }
+  header .tagline { animation-delay: 0.18s; }
+  header .location { animation-delay: 0.30s; }
+
+  @media (max-width: 560px) {
+    .skill-row { grid-template-columns: 1fr; gap: 4px; }
+    .skill-cat { padding-top: 0; }
+    header { padding-top: 70px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1 class="name reveal">Yonca&nbsp;Üstünbaş</h1>
+    <p class="tagline reveal"><span class="lede">Senior Backend Engineer</span> — Java / Spring Boot / Cloud. 14+ years of production systems, now moving toward AI engineering.</p>
+    <p class="location reveal">Istanbul, Turkey</p>
+  </header>
+
+  <section class="about">
+    <span class="label">About</span>
+    <p>Senior backend engineer with 14+ years building production systems at global scale. My work has spanned aviation and power analytics at GE, industrial IoT infrastructure at Siemens, and national-scale telecom services at Vodafone Turkey. I specialise in Java and Spring Boot microservices on cloud platforms, with full-stack reach into Angular when a feature needs it. I hold an MSc in Computer Engineering, with a graduate research background in data mining and a peer-reviewed publication in recommendation systems. I'm currently expanding into AI engineering, building on a strong backend foundation.</p>
+  </section>
+
+  <section>
+    <span class="label">Selected Work</span>
+
+    <div class="role">
+      <div class="role-head">
+        <div class="role-title">Senior Software Engineer · <span class="role-org">GE Aviation / GE Power</span></div>
+        <div class="role-years">2018 – 2025</div>
+      </div>
+      <p>Spent five years on a browser-based field service platform used by GE Power field engineers worldwide, working full-stack across Spring Boot microservices, PostgreSQL, AWS, and an Angular frontend. Earlier, contributed to GE Aviation's flagship flight-data analytics platform — used by airlines, cargo carriers and OEMs for safety, fuel efficiency and predictive maintenance — including work on its cloud migration.</p>
+    </div>
+
+    <div class="role">
+      <div class="role-head">
+        <div class="role-title">Software Development Engineer · <span class="role-org">Siemens</span></div>
+        <div class="role-years">2016 – 2018</div>
+      </div>
+      <p>Joined the pre-release team for Siemens' industrial IoT platform before its public launch, building the device and sensor data ingestion microservices at the core of the system — the real-time pipeline carrying data from industrial machines to the cloud. Deployed Spring Boot services on AWS with MongoDB, DynamoDB and PostgreSQL, working test-first throughout.</p>
+    </div>
+
+    <div class="role">
+      <div class="role-head">
+        <div class="role-title">VAS &amp; Online Solutions Senior Specialist · <span class="role-org">Vodafone Turkey</span></div>
+        <div class="role-years">2014 – 2016</div>
+      </div>
+      <p>Built backend SMS and USSD services for a national telecom serving millions of subscribers, including high-traffic campaigns where responses surged the moment a TV ad aired. Sole developer of the SMS service layer across several national campaigns, using asynchronous Java techniques to handle high-volume throughput reliably.</p>
+    </div>
+
+    <div class="role">
+      <div class="role-head">
+        <div class="role-title">Senior Software Design Engineer · <span class="role-org">Netaş</span></div>
+        <div class="role-years">2011 – 2014</div>
+      </div>
+      <p>Worked on an early WebRTC implementation enabling browser-based voice, video and messaging, when the spec had only just been released. Delivered REST APIs for call transfer and conversation management, plus session and IMS integration work, using J2EE, EJB and AOP.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="label">Technical Skills</span>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <div class="skill-cat">Languages &amp; Frameworks</div>
+        <div class="skill-list">Java, Java EE, Spring Boot, Spring Framework, Node.js, TypeScript, Angular, React, REST, SOAP</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">Cloud &amp; DevOps</div>
+        <div class="skill-list">AWS (EC2, S3), Azure, Docker, Bamboo, Git, Gradle</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">Databases</div>
+        <div class="skill-list">Oracle, PostgreSQL, MySQL, MongoDB, DynamoDB</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-cat">Practices</div>
+        <div class="skill-list">Microservices, TDD, Agile / Scrum, JUnit, Mockito</div>
+      </div>
+      <div class="skill-row current">
+        <div class="skill-cat">Currently learning</div>
+        <div class="skill-list">LLM application development, AI agents, prompt engineering</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="label">Education</span>
+    <div class="edu-item">
+      <div class="edu-title">MSc, Computer Engineering</div>
+      <div class="edu-meta">Istanbul Technical University · 2008 – 2011</div>
+    </div>
+    <div class="edu-item">
+      <div class="edu-title">BSc, Computer Science Engineering</div>
+      <div class="edu-meta">Dokuz Eylül University · 2004 – 2008</div>
+    </div>
+  </section>
+
+  <section class="pub">
+    <span class="label">Publication</span>
+    <p>A Recommendation Model for Social Resource Sharing Systems Based on Tripartite Graph Clustering — <a href="#">EISIC 2011</a>.</p>
+  </section>
+
+  <footer>
+    <span class="label">Links</span>
+    <div class="links">
+      <a href="https://linkedin.com/in/yonca-ustunbas-msc-b750ba133">LinkedIn</a>
+      <a href="mailto:yoncaustunbas@hotmail.com">Email</a>
+      <a href="#" id="link-paper">EISIC Paper</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
